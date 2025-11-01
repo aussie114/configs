@@ -6,14 +6,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-local lspconfig = require'lspconfig'
-
--- Lua
-lspconfig.lua_ls.setup {}
-
--- Python
-lspconfig.pyright.setup {}
-
 local cmp = require'cmp'
 
 cmp.setup {

@@ -4,7 +4,8 @@ font pango:Ubuntu 12
 
 ##########
 # wallaper
-output * bg /home/admin/Pictures/Wallpapers/tiger.jpg fill
+exec mpvpaper 'HDMI-A-2 DP-1' -o "--loop --no-audio" /home/admin/Pictures/Wallpapers/0010-0194.mp4  
+#output * bg /home/admin/Pictures/Wallpapers/tiger.jpg fill
 
 default_border pixel 2
 default_floating_border pixel 0
@@ -13,8 +14,12 @@ gaps inner 8
 ###########
 # Variables
 set $mod Mod4
-set $term foot
+
+set $term kitty
 set $menu bemenu-run --fn "Ubuntu Mono 12" --nb "#303446" --nf "#c6d0f5" --fb "#303446" --ff "#a6d189"   --tb "#232634" --tf "#f2d5cf"   --hb "#414559" --hf "#a6d189" --line-height 25 --prompt "❯ "
+set $browser brave
+set $file_manager pcmanfm
+
 set $ws1 "1: browser"
 set $ws2 "2: terminal"
 set $ws3 "3: gimp"
@@ -42,16 +47,18 @@ input type:keyboard xkb_numlock enabled
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
+
 bindsym $mod+d exec $menu
-bindsym $mod+e exec pcmanfm
-bindsym $mod+b exec firefox
+bindsym $mod+b exec $browser
+bindsym $mod+e exec $file_manager
+
 bindsym Print exec grim $LOCATION$filename
 bindsym Control+Print exec grim $LOCATION$filename && gimp $LOCATION$(ls -t $LOCATION | head -1)
 bindsym Alt+Print exec grim -g "$(slurp)" $LOCATION$filename
 
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exit
 bindsym $mod+h splith
 bindsym $mod+v splitv
 #bindsym $mod+s layout stacking
@@ -176,21 +183,16 @@ for_window [instance="viewnior"] floating enable
 for_window [app_id="calculator"] floating enable
 for_window [app_id="crypt"] floating enable
 for_window [app_id="percentage_calculator"] floating enable
-for_window [class="aerochat.exe"] floating enable
+for_window [app_id="interval_timer"] floating enable
+for_window [app_id="timer"] floating enable
 
-assign [class="firefox"]  $ws2
 assign [app_id="gimp"]    $ws3
 assign [app_id="blender"] $ws4
 assign [class="Steam"]    $ws10
 
-#output DP-1 resolution 1280x720
-#output HDMI-A-2 pos 2560 0
-
-#workspace $ws1 output DP-1
-#workspace $ws2 output HDMI-A-2
-
 input "1133:49174:Logitech_Optical_USB_Mouse" {
 	pointer_accel 1
 }
+
 
 include /etc/sway/config.d/*

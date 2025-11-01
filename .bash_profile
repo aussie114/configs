@@ -8,4 +8,4 @@ if [[ $(tty) == '/dev/tty1' ]]; then
     exec sway
 fi
 
-QT_QPA_PLATFORMTHEME=qt6ct
+
