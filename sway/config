@@ -4,8 +4,7 @@ font pango:Ubuntu 12
 
 ##########
 # wallaper
-exec mpvpaper 'HDMI-A-2 DP-1' -o "--loop --no-audio" /home/admin/Pictures/Wallpapers/0010-0194.mp4  
-#output * bg /home/admin/Pictures/Wallpapers/tiger.jpg fill
+output * bg /home/admin/Pictures/Wallpapers/scrooge_mcduck.jpg fill
 
 default_border pixel 2
 default_floating_border pixel 0
@@ -15,10 +14,10 @@ gaps inner 8
 # Variables
 set $mod Mod4
 
-set $term kitty
+set $term foot
 set $menu bemenu-run --fn "Ubuntu Mono 12" --nb "#303446" --nf "#c6d0f5" --fb "#303446" --ff "#a6d189"   --tb "#232634" --tf "#f2d5cf"   --hb "#414559" --hf "#a6d189" --line-height 25 --prompt "❯ "
 set $browser brave
-set $file_manager pcmanfm
+set $file_manager foot yazi
 
 set $ws1 "1: browser"
 set $ws2 "2: terminal"
@@ -186,13 +185,18 @@ for_window [app_id="percentage_calculator"] floating enable
 for_window [app_id="interval_timer"] floating enable
 for_window [app_id="timer"] floating enable
 
-assign [app_id="gimp"]    $ws3
-assign [app_id="blender"] $ws4
-assign [class="Steam"]    $ws10
+assign [app_id="brave"]       $ws1
+assign [app_id="chromium"]    $ws2
+assign [class="sticky_notes"] $ws2
+assign [app_id="gimp"]        $ws3
+assign [app_id="blender"]     $ws4
+assign [class="steam"]        $ws10
 
 input "1133:49174:Logitech_Optical_USB_Mouse" {
 	pointer_accel 1
 }
 
-
 include /etc/sway/config.d/*
+
+exec chromium --disable-session-crashed-bubble
+exec /home/admin/Development/sticky_notes/startup_sticky_note.sh

@@ -16,6 +16,7 @@ set ttyfast
 set nowrap
 set guicursor=
 set noswapfile
+set splitright
 
 autocmd InsertEnter * set guicursor=i:hor20
 autocmd InsertLeave * set guicursor=n:block
