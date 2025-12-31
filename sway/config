@@ -187,7 +187,7 @@ for_window [app_id="timer"] floating enable
 
 assign [app_id="brave"]       $ws1
 assign [app_id="chromium"]    $ws2
-assign [class="sticky_notes"] $ws2
+#assign [class="sticky_notes"] $ws2
 assign [app_id="gimp"]        $ws3
 assign [app_id="blender"]     $ws4
 assign [class="steam"]        $ws10
